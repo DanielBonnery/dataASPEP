@@ -1,0 +1,10 @@
+Package: dataASPEP
+Type: Package
+Title: X
+Version: 1.0
+Date: 2016-04-06
+Author: D. Bonnery
+Maintainer: D. Bonnery  <dbonnery@umd.edu>
+Description: Data
+License: GPL (>= 2)
+LazyLoad: yes
