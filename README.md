@@ -10,9 +10,8 @@ To install  the package, execute:
 
 ```r
 devtools::install_github("dataASPEP")
-dataASPEP::get_data_from_web()
 ```
-
+Note that installation is slow, because part of the installation process is the downloading of data from the Census Bureau website.
 
 
 ##Documentation
@@ -24,10 +23,10 @@ To see the documentation, execute:
 ```
 
 ##How was the data pulled ?
-To pull the data yourself, execute:
+To pull the data again, execute:
 
 ```r
-demo(get_data_from_web,package = "dataASPEP")
+alldata<-dataASPEP::get_data_from_web()
 ```
 
 ##How to use the data ?
