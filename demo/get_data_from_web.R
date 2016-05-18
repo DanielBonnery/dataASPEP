@@ -10,7 +10,7 @@ stateoriginalcoding<-data.frame(variable="state",levels=sprintf("%02d", 1:51),
                                 labels=c(state.name[1:8],"District of Columbia",state.name[9:50]))
 typeoriginalcoding<-data.frame(variable="type",levels=as.character(0:6),
                                labels=c("State government","County government","Municipal government","Township government","Special district government","School district government","Federal Government"))
-
+write.csv(rbind(itemcodeoriginalcoding,stateoriginalcoding,typeoriginalcoding),file="inst/extdata/codes_in_web_files.csv")
 
 
 get_data_from_web<-function(webfile,format.table){
