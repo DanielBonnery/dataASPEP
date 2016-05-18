@@ -5,7 +5,7 @@ get_data_from_web<-function(savetopackage=TRUE){
     y$id=paste0(y$state,y$type_of_gov,y$county,y$unit_identification_number,y$supp_code,y$sub_code)
     for (x in intersect(unique(codes_in_web_files$variable),names(y))){
       ref<-codes_in_web_files[codes_in_web_files$variable==x,]
-      y[x]<-factor(y[x],levels=ref$levels,labels=ref$labels)}
+      y[x][[1]]<-factor(y[x][[1]],levels=ref$levels,labels=ref$labels)}
     y[if(is.element("itemcode",names(y))){c("id","itemcode","ftemp","fteemp","ftpay","ptemp","ptpay","pthours","fte")}else{names(y)}]
   }
   get_data_from_webs<-function(webfile,format.table){
