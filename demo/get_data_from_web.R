@@ -1,8 +1,10 @@
 get_data_from_web<-function(){
-rm(list=ls())
 idformat<-read.csv(system.file("extdata","id_format.csv",package="dataASPEP"))
 dataformat<-read.csv(system.file("extdata","data_format.csv",package="dataASPEP"))
 codes_in_web_files=read.csv(system.file("extdata","codes_in_web_files.csv",package="dataASPEP"),colClasses = "character")
+
+years<-c(2007,2009:2012)
+
 
 itemcodeoriginalcoding<-data.frame(variable="itemcode",
                                    levels=
@@ -17,7 +19,7 @@ write.csv(codes_in_web_files,file="inst/extdata/codes_in_web_files.csv")
 read.csv("inst/extdata/codes_in_web_files.csv",colClasses = "character")
 
 
-get_data_from_web<-function(webfile,format.table){
+get_data_from_webs<-function(webfile,format.table){
   tmpf  <-tempfile()
   download.file(file.path("http://www2.census.gov/govs/apes/",webfile),tmpf)
   x=unzip(tmpf,exdir = tempdir())
@@ -38,16 +40,16 @@ reformat_gov<-function(y){
   y}
 
 
-aspep2007    <-reformat(get_data_from_web("07cempst.zip",dataformat))
-aspep2007_gov<-reformat_gov(get_data_from_web("07cempid.zip",idformat))
-aspep2009    <-reformat(get_data_from_web("09empst.zip",dataformat))
-aspep2009_gov<-reformat_gov(get_data_from_web("09empid.zip",idformat))
-aspep2010    <-reformat(get_data_from_web("10empst.zip",dataformat))
-aspep2010_gov<-reformat_gov(get_data_from_web("10empid.zip",idformat))
-aspep2011    <-reformat(get_data_from_web("11empst.zip",dataformat))
-aspep2011_gov<-reformat_gov(get_data_from_web("11empid.zip",idformat))
-aspep2012    <-reformat(get_data_from_web("12cempst.zip",dataformat))
-aspep2012_gov<-reformat_gov(get_data_from_web("12cempid.zip",idformat))
+aspep2007    <-reformat(get_data_from_webs("07cempst.zip",dataformat))
+aspep2007_gov<-reformat_gov(get_data_from_webs("07cempid.zip",idformat))
+aspep2009    <-reformat(get_data_from_webs("09empst.zip",dataformat))
+aspep2009_gov<-reformat_gov(get_data_from_webs("09empid.zip",idformat))
+aspep2010    <-reformat(get_data_from_webs("10empst.zip",dataformat))
+aspep2010_gov<-reformat_gov(get_data_from_webs("10empid.zip",idformat))
+aspep2011    <-reformat(get_data_from_webs("11empst.zip",dataformat))
+aspep2011_gov<-reformat_gov(get_data_from_webs("11empid.zip",idformat))
+aspep2012    <-reformat(get_data_from_webs("12cempst.zip",dataformat))
+aspep2012_gov<-reformat_gov(get_data_from_webs("12cempid.zip",idformat))
 
 
 listofids<-unique(unlist(lapply(grep("_gov",ls(),value = TRUE)[-6],function(x){get(x)$id})))
@@ -55,7 +57,7 @@ listofids<-unique(unlist(lapply(grep("_gov",ls(),value = TRUE)[-6],function(x){g
 z=find.package("dataASPEP")
 for (x in (grep("aspep",ls(),value = TRUE))){
   eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);save(",x,",file=file.path(z,'data/",x,".rda')")))}
-cat(paste(paste0("aspep",outer(c(2007,2009:2012),c("","_gov"),paste0)),collapse="\n"),
+cat(paste(paste0("aspep",outer(years,c("","_gov"),paste0)),collapse="\n"),
     file=file.path(z,'data/datalist'))
 
 }

@@ -9,12 +9,12 @@
 \description{
 
 }
-\usage{data(aspep2007_census)}
+\usage{data(aspep2007_gov)}
 \format{
  These tables contain data from the Annual Survey of Public employment and Payroll.
  The primary key of all those datasets is  "id" and "itemcode".
   \describe{
-    \name{aspepXXXX_}
+    \name{aspepXXXX_gov}
 \item{ id }{Govenment integrated ID: 
 The government unit code is the basic identification system used by the Census Bureau to keep track 
 of all governments and their dependent agencies.  The code is a 14 digit, numeric identifier.  The 
