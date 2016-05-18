@@ -10,7 +10,10 @@ To install  the package, execute:
 
 ```r
 devtools::install_github("dataASPEP")
+dataASPEP::get_data_from_web()
 ```
+
+
 
 ##Documentation
 To see the documentation, execute:
