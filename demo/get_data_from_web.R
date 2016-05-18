@@ -51,4 +51,8 @@ listofids<-unique(unlist(lapply(grep("_gov",ls(),value = TRUE)[-6],function(x){g
 z=find.package("dataASPEP")
 for (x in (grep("aspep",ls(),value = TRUE))){
   eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);save(",x,",file=file.path(z,'data/",x,".rda')")))}
+
+
+saveRDS(aspep2007,aspep2009,aspep2010,aspep2011,aspep2012,aspep2007_gov,aspep2009_gov,aspep2010_gov,aspep2011_gov,aspep2012_gov,
+        file.path("data","Rdata.rds"))
 }

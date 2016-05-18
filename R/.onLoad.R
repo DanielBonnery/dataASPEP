@@ -4,5 +4,6 @@
     packageStartupMessage("This is the first time you load dataASPEP.
                           Data is going to be downloaded from the Census Website.
                           You need a connection to the web.")
+    
     dataASPEP::get_data_from_web
   }}
