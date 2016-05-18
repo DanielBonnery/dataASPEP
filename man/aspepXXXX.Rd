@@ -1,21 +1,20 @@
 \name{aspepXXXX}
-\alias{aspep2007_census}
-\alias{aspep2009_sample}
-\alias{aspep2010_sample}
-\alias{aspep2011_sample}
-\alias{aspep2012_census}
-\alias{aspep2013_sample}
+\alias{aspep2007}
+\alias{aspep2009}
+\alias{aspep2010}
+\alias{aspep2011}
+\alias{aspep2012}
 \docType{data}
 \title{aspep}
 \description{
 
 }
-\usage{data(aspep2007_census)}
+\usage{data(aspep2007)}
 \format{
  These tables contain data from the Annual Survey of Public employment and Payroll.
  The primary key of all those datasets is  "id" and "itemcode".
   \describe{
-    \name{aspepXXXX_}
+    \name{aspepXXXX}
 \item{ id }{Govenment integrated ID: 
 The government unit code is the basic identification system used by the Census Bureau to keep track 
 of all governments and their dependent agencies.  The code is a 14 digit, numeric identifier.  The 
