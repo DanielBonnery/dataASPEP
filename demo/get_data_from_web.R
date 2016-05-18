@@ -2,15 +2,18 @@ get_data_from_web<-function(){
 rm(list=ls())
 idformat<-read.csv(system.file("extdata","id_format.csv",package="dataASPEP"))
 dataformat<-read.csv(system.file("extdata","data_format.csv",package="dataASPEP"))
+codes_in_web_files=read.csv(system.file("extdata","codes_in_web_files.csv",package="dataASPEP"))
+
 itemcodeoriginalcoding<-data.frame(variable="itemcode",
                                    levels=
                                      c("000","001","002","005","006","012","112","014","016","018","021","022","023","024","124","025","029","032","040","044","050","052","059","061","062","162","079","080","081","087","089","090","091","092","093","094"),
                                    labels=c("Totals for Government ",	"Airports ",	"Space Research & Technology (Federal) ",	"Correction ",	"National Defense and International Relations (Federal) ",	"Elementary and Secondary - Instruction ",	"Elementary and Secondary - Other Total ",	"Postal Service (Federal) ",	"Higher Education - Other ",	"Higher Education - Instructional ",	"Other Education (State) ",	"Social Insurance Administration (State) ",	"Financial Administration ",	"Firefighters ",	"Fire - Other ",	"Judical & Legal ",	"Other Government Administration ",	"Health ",	"Hospitals ",	"Streets & Highways ",	"Housing & Community Development (Local) ",	"Local Libraries ",	"Natural Resources ",	"Parks & Recreation ",	"Police Protection - Officers ",	"Police-Other ",	"Welfare ",	"Sewerage ",	"Solid Waste Management ",	"Water Transport & Terminals ",	"Other & Unallocable ",	"Liquor Stores (State) ",	"Water Supply ",	"Electric Power ",	"Gas Supply ",	"Transit "))
 stateoriginalcoding<-data.frame(variable="state",levels=sprintf("%02d", 1:51),
                                 labels=c(state.name[1:8],"District of Columbia",state.name[9:50]))
-typeoriginalcoding<-data.frame(variable="type",levels=as.character(0:6),
+typeoriginalcoding<-data.frame(variable="type_of_gov",levels=as.character(0:6),
                                labels=c("State government","County government","Municipal government","Township government","Special district government","School district government","Federal Government"))
-write.csv(rbind(itemcodeoriginalcoding,stateoriginalcoding,typeoriginalcoding),file="inst/extdata/codes_in_web_files.csv")
+codes_in_web_files=rbind(itemcodeoriginalcoding,stateoriginalcoding,typeoriginalcoding)
+write.csv(codes_in_web_files,file="inst/extdata/codes_in_web_files.csv")
 
 
 get_data_from_web<-function(webfile,format.table){
