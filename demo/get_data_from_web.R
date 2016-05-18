@@ -1,3 +1,4 @@
+get_data_from_web<-function(){
 rm(list=ls())
 idformat<-read.csv(system.file("extdata","id_format.csv",package="dataASPEP"))
 dataformat<-read.csv(system.file("extdata","data_format.csv",package="dataASPEP"))
@@ -47,6 +48,7 @@ aspep2012_gov<-reformat_gov(get_data_from_web("12cempid.zip",idformat))
 
 listofids<-unique(unlist(lapply(grep("_gov",ls(),value = TRUE)[-6],function(x){get(x)$id})))
 
-
+z=find.package("dataASPEP")
 for (x in (grep("aspep",ls(),value = TRUE))){
-  eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);save(",x,",file='data/",x,".rda')")))}
+  eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);save(",x,",file=file.path(z,'data/",x,".rda')")))}
+}
