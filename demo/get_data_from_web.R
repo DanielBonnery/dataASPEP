@@ -2,7 +2,7 @@ get_data_from_web<-function(){
 rm(list=ls())
 idformat<-read.csv(system.file("extdata","id_format.csv",package="dataASPEP"))
 dataformat<-read.csv(system.file("extdata","data_format.csv",package="dataASPEP"))
-codes_in_web_files=read.csv(system.file("extdata","codes_in_web_files.csv",package="dataASPEP"))
+codes_in_web_files=read.csv(system.file("extdata","codes_in_web_files.csv",package="dataASPEP"),colClasses = "character")
 
 itemcodeoriginalcoding<-data.frame(variable="itemcode",
                                    levels=
@@ -14,6 +14,7 @@ typeoriginalcoding<-data.frame(variable="type_of_gov",levels=as.character(0:6),
                                labels=c("State government","County government","Municipal government","Township government","Special district government","School district government","Federal Government"))
 codes_in_web_files=rbind(itemcodeoriginalcoding,stateoriginalcoding,typeoriginalcoding)
 write.csv(codes_in_web_files,file="inst/extdata/codes_in_web_files.csv")
+read.csv("inst/extdata/codes_in_web_files.csv",colClasses = "character")
 
 
 get_data_from_web<-function(webfile,format.table){
