@@ -5,5 +5,5 @@
                           Data is going to be downloaded from the Census Website.
                           You need a connection to the web.")
     
-    dataASPEP::get_data_from_web
+    get_data_from_web()
   }}
