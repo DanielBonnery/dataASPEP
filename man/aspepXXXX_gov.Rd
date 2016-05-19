@@ -12,7 +12,10 @@
 \usage{data(aspep2007_gov)}
 \format{
  These tables contain data from the Annual Survey of Public employment and Payroll.
- The primary key of all those datasets is  "id" and "itemcode".
+ The primary key of all those datasets is  "id".
+  All payroll and part-time hours in the data file are 31-day monthly equivalent values for the month of March.
+ This documentation is based on the following file:
+ \url{http://www.census.gov//govs/apes/gov_id_layout_07.html}
   \describe{
     \name{aspepXXXX_gov}
 \item{ id }{Govenment integrated ID: 
@@ -25,105 +28,36 @@ SS = state
 T = type of government    
 CCC = county area within the state 
 UUU = unit code within the county area 
-
-SUP = supplemental unit code, for de
-pendent agencies of the parent unit 
-
+SUP = supplemental unit code, for dependent agencies of the parent unit 
 SB = subsidiary code for dependent agencies that require separate data collection / canvassing    
-The following parameters and rules apply to the code structure: 
-
-SS is a numeric sequence assigned to the states alphabetically – Alabama is 01, Alaska 02, and 
-so forth, until Wyoming at 51.  Note the District of Columbia is assigned code 09 and the U.S. 
-Federal Government is assigned code 00. 
-
-T represents type of government, as defined by 
-the Census Bureau. Government type codes are 
-0 = state governments 
-1 = county governments 
-2 = municipal governments 
-3 = township governments 
-4 = special district governments 
-5 = school district governments 
-6 = Federal Government 
-
-CCC, the county area codes, are assigned alphabetically within each state area, although there 
-are some exceptions where county consolidations
- have taken place or new counties have been 
-created.                                                                 
-
-The unit code UUU identifies a specific government
- within the state, county, and type of 
-government sequence.  They, too, are generally alphabetical within the county area and type of 
-government combination, but exceptions exist (especially for special districts).  The unit code 
-
 }
-\item{ state }{ State }
-\item{ pefcode }{in 2007 and 2012, when type is 1, 2 or 3, this is the total population in the area corresponding to the government identified with id. If type is 5, this is the number of students, if code is 4, this is the itemcode}
-    \item{itemcode}{The table below gives the original coding of the item codes:
-   Function (Item) Codes
-000 = Totals for Government 
-001 = Airports 
-002 = Space Research & Technology (Federal) 
-005 = Correction 
-006 = National Defense and International Relations (Federal)  
-012 = Elementary and Secondary - Instruction 
-112 = Elementary and Secondary - Other Total 
-014 = Postal Service (Federal) 
-016 = Higher Education - Other 
-018 = Higher Education - Instructional 
-021 = Other Education (State) 
-022 = Social Insurance Administration (State) 
-023 = Financial Administration 
-024 = Firefighters 
-124 = Fire - Other 
-025 = Judical & Legal 
-029 = Other Government Administration 
-032 = Health 
-040 = Hospitals 
-044 = Streets & Highways 
-050 = Housing & Community Development (Local) 
-052 = Local Libraries 
-059 = Natural Resources 
-061 = Parks & Recreation 
-062 = Police Protection - Officers 
-162 = Police-Other 
-079 = Welfare 
-080 = Sewerage 
-081 = Solid Waste Management 
-087 = Water Transport & Terminals 
-089 = Other & Unallocable 
-090 = Liquor Stores (State) 
-091 = Water Supply 
-092 = Electric Power 
-093 = Gas Supply 
-094 = Transit )
-}
-\item{ ftemp}{Number of full time  employees }
-\item{ ftpay }{Full time pay }
-\item{ ptemp }{Number of part time employees }
-\item{ ptpay }{Pay of part time employees}
-\item{ pthours }{Number of part time hours }
-\item{ finalWeight }{ finalWeight }
-\item{ inSample }{In 2007 table, selection indicator }
-    \item{stratum}{Factor variable for substratum
-    Levels: "C1": initial certainty (determined by the survey director or customer(Bureau of Economic Analysis for example), this substratum contains all units which the customer want to see on the report),
-    "C2" : the second certainty substratum corresponding to all units selected with certainty, as determined by the proc surveyselect sas procedure with the "method=pps" option used by the Census Bureau.
-    "CF": corresponds to all units that were added to the sample after the intial sample was drawn, on the demand of the customer.
-    "LG": Stratum containing large units, in the sense of the cutoff sampling method (See Cochran 129)
-    "SM": Stratum containing small units, in the sense of the cutoff sampling method (See Cochran 129)
-    "FU": Cutoff sampling method was applied to type 3 and 4 only. units of type 1, 2 and 5 that are not in one of the previous substrata will be put in "FU" ("FU" for full, no cutoff)}
-    \item{bigN}{bigN is the population size of a cell given by the state and type.}
-    \item{littleN}{littleN is the sample size of a cell given by the state and type.}
-    \item {type}{Type of government, as defined by the Census Bureau. Original government type codes are 
-0 = state governments 
-1 = county governments 
-2 = municipal governments 
-3 = township governments 
-4 = special district governments 
-5 = school district governments 
-6 = Federal Government 
-    }
-
+\item{state}{state}
+\item{type_of_gov}{Type of government}
+\item{county}{County code}
+\item{unit_identification_number}{Unit}
+\item{supp_code}{Supplement Code}
+\item{sub_code}{Sub code}
+\item{name}{Name of the government/Political Description}
+\item{census_region}{Census region code}
+\item{county_name}{County name}
+\item{fips_state}{FIPS state (NA for 2002)}
+\item{fips_county}{FIPS county (NA for 2002)}
+\item{pefcode}{Population/Enrollment/Function Code}
+\item{yearpop_enroll}{Year of Population/Enrollment}
+\item{school_level_code}{School Level code}
+\item{sample_weight}{Sample Weight}
+\item{weekly_hours_code}{Weekly Hours Code }
+\item{ftpaycode}{Full-time Pay Code }
+\item{ptpaycode}{Part-time Pay Code }
+\item{number_of_months_teachers_paid}{Number of Months Teachers Paid}
+\item{number_of_months_school_admin_paid}{Number of Months School Admin Paid}
+\item{number_of_months_school_other_paid}{Number of Months School Other Paid}
+\item{year_of_data}{(Year of Data except dependent school data)
+99 = response for 1999
+II = data imputed
+NN = No information for this unit }
+\item{year_of_dependent_school_data}{Year of Dependent School Data}
+\item{survey_form_type}{Survey Form Type}
 }
 }
 \source{\url{https://www.census.gov/govs/apes/},
