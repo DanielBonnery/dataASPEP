@@ -10,7 +10,7 @@ get_data_from_web<-function(directory=NULL){
   }
   get_data_from_webs<-function(webfile,format.table){
     tmpf  <-tempfile()
-    download.file(file.path("http://www2.census.gov/govs/apes/",webfile),tmpf)
+    download.file(file.path("http://www2.census.gov/govs/apes",webfile),tmpf)
     x=unzip(tmpf,exdir = tempdir())
     y<-read.fwf(x,width=format.table$length,
                 header=FALSE,
