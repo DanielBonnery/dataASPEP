@@ -12,7 +12,7 @@ get_data_from_web<-function(directory=NULL){
     tmpf  <-tempfile()
     data.url<-file.path("http://www2.census.gov/govs/apes",webfile)
     xxxx=try(download.file(url=data.url,destfile = tmpf,method="wget",extra="--random-wait --retry-on-http-error=503"))
-    while(is.element(class(xxxx,"try-error"))){
+    while(is.element("try-error",class(xxxx))){
       warning(paste0("Have to try to download ",data.url," again, previous attempt failed"))
       download.file(url=data.url,destfile = tmpf,method="wget",extra="--random-wait --retry-on-http-error=503")
     }
