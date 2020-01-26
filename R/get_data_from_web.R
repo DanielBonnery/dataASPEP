@@ -29,5 +29,6 @@ get_data_from_web<-function(directory=NULL){
   if(!is.null(directory)){
     cat(paste(paste0("aspep",outer(years,c("","_gov"),paste0)),collapse="\n"),file=file.path(directory,'datalist'))}
   for (x in c(names(L1),names(L2))){
+    savetopackage=TRUE
     eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);if(savetopackage){save(",x,",file=file.path(directory,'/",x,".rda'))}")))}
   if(!savetopackage){return(c(L1,L2))}}
