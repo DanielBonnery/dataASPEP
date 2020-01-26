@@ -9,7 +9,7 @@ The data was pulled from the [Census website](http://www.census.gov/govs/apes/).
 To install  the package, execute:
 
 ```r
-devtools::install_github("dataASPEP")
+devtools::install_github("DanielBonnery/dataASPEP")
 ```
 Note that installation is slow, because part of the installation process is the downloading of data from the Census Bureau website.
 

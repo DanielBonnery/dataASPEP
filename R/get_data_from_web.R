@@ -1,6 +1,6 @@
-get_data_from_web<-function(savetopackage=TRUE){
+get_data_from_web<-function(directory=NULL){
+  years=c(2007,2009:2012)
   codes_in_web_files=read.csv(system.file("extdata","codes_in_web_files.csv",package="dataASPEP"),colClasses = "character")
-  years<-c(2007,2009:2012)
   reformat<-function(y){
     y$id=paste0(y$state,y$type_of_gov,y$county,y$unit_identification_number,y$supp_code,y$sub_code)
     for (x in intersect(unique(codes_in_web_files$variable),names(y))){
@@ -26,10 +26,8 @@ get_data_from_web<-function(savetopackage=TRUE){
   names(L2)<-paste0("aspep",years,"_gov")
   listofids<-unique(unlist(lapply(L1,function(x){x$id})))
   attach(L1);attach(L2)
-  if(savetopackage){
-    z=find.package("dataASPEP")
-    if(!file.exists(file.path(z,'data'))){dir.create(file.path(z,'data'))}
-    cat(paste(paste0("aspep",outer(years,c("","_gov"),paste0)),collapse="\n"),file=file.path(z,'data/datalist'))}
+  if(!is.null(directory)){
+    cat(paste(paste0("aspep",outer(years,c("","_gov"),paste0)),collapse="\n"),file=file.path(directory,'datalist'))}
   for (x in c(names(L1),names(L2))){
-    eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);if(savetopackage){save(",x,",file=file.path(z,'data/",x,".rda'))}")))}
+    eval(parse(text=paste0(x,"$id=factor(",x,"$id,levels=listofids);if(savetopackage){save(",x,",file=file.path(directory,'/",x,".rda'))}")))}
   if(!savetopackage){return(c(L1,L2))}}
