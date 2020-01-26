@@ -11,7 +11,11 @@ get_data_from_web<-function(directory=NULL){
   get_data_from_webs<-function(webfile,format.table){
     tmpf  <-tempfile()
     data.url<-file.path("http://www2.census.gov/govs/apes",webfile)
-    xxxx=try(download.file(data.url,tmpf))
+    xxxx=try(download.file(url=data.url,destfile = tmpf,method="wget",extra="--random-wait --retry-on-http-error=503"))
+    while(is.element(class(xxxx,"try-error"))){
+      warning(paste0("Have to try to download ",data.url," again, previous attempt failed"))
+      download.file(url=data.url,destfile = tmpf,method="wget",extra="--random-wait --retry-on-http-error=503")
+    }
     Sys.sleep(sample(10, 1))
     x=unzip(tmpf,exdir = tempdir())
     y<-read.fwf(x,width=format.table$length,
