@@ -2,11 +2,12 @@ Package: dataASPEP
 Type: Package
 Title: X
 Version: 1.0 
-Date: 2020-01-29
+Date: 2020-02-03
 Author: D. Bonnery
 Maintainer: D. Bonnery  <dbonnery@umd.edu>
 Description: Data
 Remotes: hrbrmstr/cfhttr
+Depends: downloader
 License: GPL (>= 2)
 LazyLoad: yes
 LazyData: true
