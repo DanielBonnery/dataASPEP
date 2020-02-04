@@ -11,9 +11,9 @@
 #       get_data_from_web()                               #
 #                                                         #
 # After which data is going to be downloaded from the     #
-#Census Website.                                          #
+# Census Website.                                         #
 # A connection to the web is needed.                      #
-# This takes a long time.                                 #
+# This takes a long time (less than 10 minutes though).   #
 ###########################################################
 ")
   }}
