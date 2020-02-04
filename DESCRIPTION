@@ -2,7 +2,7 @@ Package: dataASPEP
 Type: Package
 Title: X
 Version: 1.0 
-Date: 2020-02-03
+Date: 2020-02-04
 Author: D. Bonnery
 Maintainer: D. Bonnery  <dbonnery@umd.edu>
 Description: Data
