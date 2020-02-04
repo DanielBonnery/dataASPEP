@@ -5,13 +5,15 @@
 "
 ###########################################################
 # This is the first time the package dataASPEP is loaded. #
-# Or the all the data has not been downloaded yet.        #
+# Or all the data has not been downloaded yet.            #
 # It is recommended to execute:                           #
 #                                                         #
 #       get_data_from_web()                               #
 #                                                         #
-# Data is going to be downloaded from the Census Website. #
+# After which data is going to be downloaded from the     #
+#Census Website.                                          #
 # A connection to the web is needed.                      #
+# This takes a long time.                                 #
 ###########################################################
 ")
   }}
